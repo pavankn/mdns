@@ -16,6 +16,9 @@ extern "C" {
 MDNS_API int
 mdns_discover_ips(char** out_ips, int max_ips);
 
+MDNS_API void
+mdns_free_ips(char** ips, int count);
+
 #ifdef __cplusplus
 }
 #endif

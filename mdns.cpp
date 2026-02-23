@@ -1264,6 +1264,17 @@ mdns_discover_ips(char** out_ips, int max_ips) {
 	return count;
 }
 
+extern "C" MDNS_API void
+mdns_free_ips(char** ips, int count) {
+	if (!ips)
+		return;
+
+	for (int i = 0; i < count; i++) {
+		free(ips[i]);  // matches _strdup
+		ips[i] = NULL;
+	}
+}
+
 #ifdef __cplusplus
 }
 #endif
